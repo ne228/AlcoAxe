@@ -1,0 +1,139 @@
+﻿@model AlcoAxe.Data.Game
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="y-container">
+    <h4>Выбор конфигурации игры</h4>
+
+    <hr />
+    <br />
+
+
+    <form asp-controller="Games" asp-action="Create">
+
+
+        <div>
+            <label class="label" asp-for="GameType.NameGameType"></label>
+            <select class="text-input" asp-for="GameType.Id" asp-items="ViewBag.GameTypes"></select>
+        </div>
+
+        <div>
+            <label class="label" asp-for="GameMode"></label>
+            <select class="text-input" asp-for="GameMode" asp-items="Html.GetEnumSelectList<AlcoAxe.Data.GameMode>()"></select>
+        </div>
+
+        <div class="players">
+
+            <div class="player">
+                <label class="label" asp-for="Players[0].Name">Игрок 1</label>
+                <span class="text-danger" asp-validation-for="Players[0].Name"></span>
+                <input class="text-input playername" asp-for="Players[0].Name" placeholder="Введите имя" />
+
+            </div>
+
+            <div class="player">
+                <label class="form-label" asp-for="Players[1].Name">Игрок 2</label>
+                <span class="text-danger" asp-validation-for="Players[1].Name"></span>
+                <input class="form-control playername" asp-for="Players[1].Name" placeholder="Введите имя" />
+
+            </div>
+
+
+        </div>
+        <div class="validation">
+            <p class="text-danger"></p>
+        </div>
+
+        <div class="">
+            <input type="button" class="add-player-btn" value="Добавить игрока" />
+        </div>
+
+        <div class="">
+            <input type="button" class="remove-player-btn" value="Удалить игрока" />
+        </div>
+
+
+        <div class="">
+            <input type="submit" class="create-player-btn" value="Начать игру" />
+        </div>
+    </form>
+</div>
+
+
+<div>
+    <a asp-action="Index">Вернуться на главную</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<script>
+
+    function getStrPlayerHtml(countPlayer) {
+
+
+        var str = `<label class="form-label" for="Players_${countPlayer}__Name">Игрок ${countPlayer + 1}</label>`;
+        str += `
+<input class="form-control playername" type="text" data-val-required="Введите имя игрока" id="Players_${countPlayer}__Name" name="Players[${countPlayer}].Name" placeholder="Введите имя" value="">`;
+        str += `<span class="text-danger field-validation-valid" data-valmsg-for="Players[${countPlayer}].Name" data-valmsg-replace="true"></span>`;
+
+        return str;
+
+
+    }
+
+
+    document.querySelector(".add-player-btn").onclick = function () {
+
+        let playersDiv = document.querySelector(".players");
+        let players = document.querySelectorAll(".player");
+
+        let div = document.createElement('div');
+        div.className = "player";
+        div.innerHTML = getStrPlayerHtml(players.length);
+
+        playersDiv.append(div);
+
+
+    }
+
+    document.querySelector(".remove-player-btn").onclick = function () {
+
+        let players = document.querySelectorAll(".player");
+
+        players[players.length - 1].remove();
+
+
+    }
+
+    document.querySelector(".create-player-btn").onclick = function (event) {
+
+        var players = document.querySelectorAll(".playername");
+
+        var validzone = document.querySelector(".validation").children[0];
+
+
+        console.log(players.length);
+
+        for (var i = 0; i < players.length; i++) {
+            if (players[i].value.length <= 0) {
+
+                event.preventDefault();
+                console.log(`name number ${i} not valid ${players[i].value}`);
+                validzone.innerHTML = `Введите имена всех игроков`
+                return;
+
+            }
+        }
+
+    }
+
+
+
+
+
+</script>

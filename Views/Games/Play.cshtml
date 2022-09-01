@@ -1,0 +1,79 @@
+﻿@model AlcoAxe.Data.Game
+
+@{
+
+    if (ViewBag.Ajax)
+        Layout = "";
+
+    ViewData["Title"] = Model.GameType;
+
+    var random = new Random();
+}
+
+
+<div class="show">
+    @*<p>хуй</p>*@
+
+</div>
+<div class="play" gameid="@Model.Id">
+    <div class="tinder-container">
+
+        <div class="tinder">
+            <div class="tinder--status">
+                <i class="fa fa-remove"></i>
+                <i class="fa fa-heart"></i>
+            </div>
+            <div class="tinder--cards">
+                @{
+                    var currQuestions = Model.Questions.
+                        Where(x => x.QuestionDate == AlcoAxe.Data.QuestionDate.NoDate).OrderBy(x => x.Position);
+
+                    foreach (var currQuestion in currQuestions)
+                    {
+
+                        var img = $"/img/card-images/alcoaxe{random.Next(1, 3).ToString()}.png";
+
+                        <div class="tinder--card" gameid="@currQuestion.Game.Id" questionid="@currQuestion.Id">
+
+
+                            <div class="tinder-card-player-name tinder-card-object">
+                                <h4>@currQuestion.Player.Name</h4>
+                            </div>
+
+                            <div class="tinder-card-image tinder-card-object">
+                                <div class="tinder-card-image-cirle">
+                                    <img src="@img">
+                                </div>
+                            </div>
+                            <div class="tinder-card-namegame tinder-card-object">
+                                <p>@Model.GameType.NameGameType</p>
+                            </div>
+
+                            <div class="tinder-card-question tinder-card-object">
+                                <p>
+                                    @currQuestion.SampleQuestion.QuestionString
+                                </p>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+                <div class="tinder--card">
+                    <h4>Карты закончились :(</h4>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="tinder--buttons">
+            <div id="nope"><img src="~/img/nope.png" alt="nope" /></div>
+            <div id="refresh" class="tinder-card-refresh-btn"><img src="~/img/refresh.png" alt="refresh" /></div>
+            <div id="love"> <img src="~/img/love.png" alt="love" /></div>
+        </div>
+
+        <script src="~/js/tinder.js" asp-append-version="true"></script>
+    </div>
+
+</div>
+

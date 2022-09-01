@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AlcoAxe.Data.Game>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="y-container">
+    <h4>Ваши игры</h4>
+    <hr />
+
+    <div class="index">
+        <a class="create-game-btn" asp-action="Create">
+            <p>Начать игру</p>
+        </a>
+
+        @foreach (var item in Model)
+        {
+            <a class="index-game" asp-action="Play" asp-route-id="@item.Id">
+                <div class="index-game-text">
+                    <p>@item.DateTime.ToLongDateString() @item.DateTime.ToShortTimeString()</p>
+                    <p>Тип игры:  @item.GameType.NameGameType</p>
+                    <p>Игроки:</p>
+                    @{ for (int i = 0; i < item.Players.Count; i++)
+                        {
+                            int num = i + 1;
+                            <p style="padding-left:10px;">Игрок @num: @item.Players[i].Name</p>
+                        }
+                    }
+                </div>
+                <div class="index-game-play-btn">
+                    <p>Играть</p>
+                </div>
+            </a>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0" />*@
+    <title>@ViewData["Title"] - AlcoAxe</title>
+
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css />*@
+    <link rel="stylesheet" href="~/css/tinder.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/mytinder.css" />
+
+
+</head>
+<body>
+    <header>
+        <div class="header">
+            <a asp-action="Index" asp-controller="Games" class="logo">SecretБляAxe</a>
+        </div>
+    </header>
+
+    <main role="main" class="mycontainer">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer">
+            @*&copy; 2022 - AlcoAxe*@
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/js/tinder.js" asp-append-version="true"></script>*@
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@model AlcoAxe.Data.Game
+
+@{
+    ViewData["Title"] = "Play";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+
+<div class="game-info">
+    <label>GameMode: @Model.GameMode</label> <br />
+    <label>GameType: @Model.GameType.NameGameType</label><br />
+
+
+    @foreach (var player in Model.Players)
+    {
+        <label>player: @player.Name</label><br />
+    }
+
+    <label>Questions: @Model.Questions.Count</label><br />
+</div>
+
+
+
+<hr />
+<div>
+    @{
+        var currQuestion = Model.Questions.
+            FirstOrDefault(x => x.QuestionDate == AlcoAxe.Data.QuestionDate.NoDate);
+
+        if (currQuestion == null)
+        {
+            <label> Вопросы закончились</label>
+        }
+        else
+        {
+            <div class="question-card">
+                <form asp-controller="Games" asp-action="Send">
+
+                    <labl>Question:</labl><br />
+                    <label>@currQuestion.SampleQuestion.QuestionString</label><br />
+
+                    <div>
+                        <label>Выберите ответ: </label>
+                        <select class="form-control" asp-items="Html.GetEnumSelectList<AlcoAxe.Data.QuestionDate>()"></select>
+                    </div>
+                    @Html.Hidden("Id", Model.Id)
+                    <input type="submit" />
+
+                </form>
+            </div>
+
+        }
+    }
+
+</div>
+
+
+<div>
+
+    <a asp-action="Index">Back to List</a>
+</div>

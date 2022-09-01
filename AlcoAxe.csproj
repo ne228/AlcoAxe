@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\js\.bin\**" />
+    <Compile Remove="wwwroot\js\js-tokens\**" />
+    <Compile Remove="wwwroot\js\loose-envify\**" />
+    <Compile Remove="wwwroot\js\object-assign\**" />
+    <Compile Remove="wwwroot\js\p-sleep\**" />
+    <Compile Remove="wwwroot\js\react-dom\**" />
+    <Compile Remove="wwwroot\js\react-tinder-card\**" />
+    <Compile Remove="wwwroot\js\react\**" />
+    <Compile Remove="wwwroot\js\scheduler\**" />
+    <Compile Remove="wwwroot\node_modules\**" />
+    <Content Remove="wwwroot\js\.bin\**" />
+    <Content Remove="wwwroot\js\js-tokens\**" />
+    <Content Remove="wwwroot\js\loose-envify\**" />
+    <Content Remove="wwwroot\js\object-assign\**" />
+    <Content Remove="wwwroot\js\p-sleep\**" />
+    <Content Remove="wwwroot\js\react-dom\**" />
+    <Content Remove="wwwroot\js\react-tinder-card\**" />
+    <Content Remove="wwwroot\js\react\**" />
+    <Content Remove="wwwroot\js\scheduler\**" />
+    <Content Remove="wwwroot\node_modules\**" />
+    <EmbeddedResource Remove="wwwroot\js\.bin\**" />
+    <EmbeddedResource Remove="wwwroot\js\js-tokens\**" />
+    <EmbeddedResource Remove="wwwroot\js\loose-envify\**" />
+    <EmbeddedResource Remove="wwwroot\js\object-assign\**" />
+    <EmbeddedResource Remove="wwwroot\js\p-sleep\**" />
+    <EmbeddedResource Remove="wwwroot\js\react-dom\**" />
+    <EmbeddedResource Remove="wwwroot\js\react-tinder-card\**" />
+    <EmbeddedResource Remove="wwwroot\js\react\**" />
+    <EmbeddedResource Remove="wwwroot\js\scheduler\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\**" />
+    <None Remove="wwwroot\js\.bin\**" />
+    <None Remove="wwwroot\js\js-tokens\**" />
+    <None Remove="wwwroot\js\loose-envify\**" />
+    <None Remove="wwwroot\js\object-assign\**" />
+    <None Remove="wwwroot\js\p-sleep\**" />
+    <None Remove="wwwroot\js\react-dom\**" />
+    <None Remove="wwwroot\js\react-tinder-card\**" />
+    <None Remove="wwwroot\js\react\**" />
+    <None Remove="wwwroot\js\scheduler\**" />
+    <None Remove="wwwroot\node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Node.js" Version="5.3.0" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+
+</Project>
